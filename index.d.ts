@@ -1,8 +1,12 @@
 import { Config } from "@svgr/core";
 
-declare function svgrPlugin(options?: Config): {
-    name: string;
-    setup(build: unknown): void;
+interface ExtendedConfig extends Config {
+  transformInline?: (rawSvg: string) => string;
+}
+
+declare function svgrPlugin(options?: ExtendedConfig): {
+  name: string;
+  setup(build: unknown): void;
 };
 
 export = svgrPlugin;
